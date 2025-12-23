@@ -5,8 +5,9 @@ import Archive from './components/Archive';
 import Footer from './components/Footer';
 import { createRandomPost } from './utils/createRandomPost';
 
+export const PostContext = createContext();
+
 function App() {
-  const PostContext = createContext();
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
   );
@@ -43,7 +44,7 @@ function App() {
     <PostContext.Provider
       value={{
         posts: searchedPosts,
-        ondAddPost: handleAddPost,
+        onAddPost: handleAddPost,
         onClearPosts: handleClearPosts,
         searchQuery,
         setSearchQuery,
@@ -57,13 +58,8 @@ function App() {
           {isFakeDark ? '☀️' : '🌙'}
         </button>
 
-        <Header
-          posts={searchedPosts}
-          onClearPosts={handleClearPosts}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        <Main posts={searchedPosts} onAddPost={handleAddPost} />
+        <Header />
+        <Main />
         <Archive onAddPost={handleAddPost} />
         <Footer />
       </section>
