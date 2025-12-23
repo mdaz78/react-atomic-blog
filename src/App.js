@@ -9,10 +9,9 @@ function createRandomPost() {
 }
 
 function App() {
-  const [posts, setPosts] = useState(() => {
-    console.log('test 2');
-    return Array.from({ length: 30 }, () => createRandomPost());
-  });
+  const [posts, setPosts] = useState(() =>
+    Array.from({ length: 30 }, () => createRandomPost())
+  );
   const [searchQuery, setSearchQuery] = useState('');
   const [isFakeDark, setIsFakeDark] = useState(false);
 
@@ -41,8 +40,6 @@ function App() {
     },
     [isFakeDark]
   );
-
-  console.log('test 1');
 
   return (
     <section>
