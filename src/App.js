@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import Header from './components/Header';
-import Main from './components/Main';
+import { PostProvider } from './PostContext';
 import Archive from './components/Archive';
 import Footer from './components/Footer';
-import { PostProvider } from './PostContext';
+import Header from './components/Header';
+import Main from './components/Main';
 
 function App() {
   const [isFakeDark, setIsFakeDark] = useState(false);

@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { createRandomPost } from './utils/createRandomPost';
 
 export const PostContext = createContext();
@@ -40,4 +40,14 @@ export const PostProvider = ({ children }) => {
       {children}
     </PostContext.Provider>
   );
+};
+
+export const usePosts = () => {
+  const context = useContext(PostContext);
+
+  if (!context) {
+    throw new Error('PostContext was used outside the post provider');
+  }
+
+  return context;
 };
