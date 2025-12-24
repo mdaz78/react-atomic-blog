@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { usePosts } from '../PostContext';
 import Results from './Results';
 import SearchPosts from './SearchPosts';
@@ -18,4 +19,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

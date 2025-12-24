@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { usePosts } from '../PostContext';
 import { createRandomPost } from '../utils/createRandomPost';
 
@@ -36,4 +36,4 @@ function Archive() {
   );
 }
 
-export default Archive;
+export default memo(Archive);
