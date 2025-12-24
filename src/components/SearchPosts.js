@@ -1,7 +1,7 @@
-import { usePosts } from '../PostContext';
+import { useSearch } from '../SearchContext';
 
 function SearchPosts() {
-  const { searchQuery, setSearchQuery } = usePosts();
+  const { searchQuery, setSearchQuery } = useSearch(); // Uses SearchContext
 
   return (
     <input

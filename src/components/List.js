@@ -1,7 +1,7 @@
-import { usePosts } from '../PostContext';
+import { useSearch } from '../SearchContext';
 
 function List() {
-  const { posts } = usePosts();
+  const { posts } = useSearch(); // Uses SearchContext to get filtered posts
 
   return (
     <ul>

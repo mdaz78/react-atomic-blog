@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PostProvider } from './PostContext';
+import { SearchProvider } from './SearchContext';
 import Archive from './components/Archive';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -26,10 +27,12 @@ function App() {
       </button>
 
       <PostProvider>
-        <Header />
-        <Main />
-        <Archive />
-        <Footer />
+        <SearchProvider>
+          <Header />
+          <Main />
+          <Archive />
+          <Footer />
+        </SearchProvider>
       </PostProvider>
     </section>
   );

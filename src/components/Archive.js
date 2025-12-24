@@ -11,7 +11,7 @@ function Archive() {
 
   const [showArchive, setShowArchive] = useState(false);
 
-  const { onAddPost } = usePosts();
+  const { onAddPost } = usePosts(); // Only subscribes to PostContext, not SearchContext
 
   return (
     <aside>

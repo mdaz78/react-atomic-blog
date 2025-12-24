@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { usePosts } from '../PostContext';
 
 function FormAddPost() {
-  const { onAddPost } = usePosts();
+  const { onAddPost } = usePosts(); // Only subscribes to PostContext, not SearchContext
 
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');

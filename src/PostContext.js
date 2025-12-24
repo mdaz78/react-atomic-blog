@@ -1,41 +1,35 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import { createRandomPost } from './utils/createRandomPost';
 
+// PostContext: Manages posts and post operations
 export const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
   );
-  const [searchQuery, setSearchQuery] = useState('');
 
-  // Derived state. These are the posts that will actually be displayed
-  const searchedPosts =
-    searchQuery.length > 0
-      ? posts.filter((post) =>
-          `${post.title} ${post.body}`
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase())
-        )
-      : posts;
-
-  function handleAddPost(post) {
+  const handleAddPost = useCallback((post) => {
     setPosts((posts) => [post, ...posts]);
-  }
+  }, []);
 
-  function handleClearPosts() {
+  const handleClearPosts = useCallback(() => {
     setPosts([]);
-  }
+  }, []);
 
   const value = useMemo(() => {
     return {
-      posts: searchedPosts,
+      posts,
       onAddPost: handleAddPost,
       onClearPosts: handleClearPosts,
-      searchQuery,
-      setSearchQuery,
     };
-  }, [searchedPosts, searchQuery]);
+  }, [posts, handleAddPost, handleClearPosts]);
 
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };
